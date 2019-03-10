@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <!-- 1.display: none; 与 visibility: hidden; 的区别
+       联系：都能让元素消失。
+       display: none;让元素完全从渲染树中消失，渲染不占空间。
+       visibility: hidden; 不会从渲染树中消失，只是元素不可见。
+       display: none;非继承属性，visibility: hidden;继承属性。
+       display: none;会造成文档重排（回流），visibility: hidden 只会重绘。
+       display: none 读屏器不会读取。 visibility: hidden 会读取
+  -->
+  <!-- 2. css hack指各版本及各品牌浏览器之间对CSS解释后出现网页内容的误差
+      原理：利用不同浏览器对CSS的支持和解析结果不一样编写针对特定浏览器样式。
+  -->
+  <!-- 3.link 与 @import 的区别：
+      link 是HTML方式， @import 是CSS方式
+      link最大限度支持并行下载，@import过多嵌套回导致串行下载，出现fouc（页面闪烁）
+      浏览器对 link 支持早于@import ，可以使用 @import 对老浏览器隐藏样式
+      @import 必须在样式规则之前，可以在css文件中引用其他文件
+      总体来说：link优于@import
+  -->
+  <!-- 4.CSS有哪些继承属性
+       关于文字排版：
+       font
+          word-break
+          letter-spacing
+          text-align
+          text-rendering
+          word-spacing
+          white-space
+          text-indent
+          text-transform
+          text-shadow
+  -->
+  <!-- 5.display,float,position的关系
+      如果 display 为none，那么position和float都不起作用，这种情况下元素不产生框
+      否则，如果position值为absolute或者fixed，框就是绝对定位的，float的计算值为none，display根据下面的表格进行调整
+      否则，如果float不是none，框是浮动的，display根据下表进行调整
+      否则，如果元素是根元素，display根据下表进行调整
+      其他情况下display的值为指定值 总结起来：绝对定位、浮动、根元素都需要调整 display
+  -->
+  <!-- 6.外边距折叠(collapsing margins)
+      多个相邻（兄弟或者父子关系）普通流的块元素垂直方向marigin会重叠
+      元素自身的margin-bottom和margin-top相邻时也会折
+      折叠的结果：
+        两个相邻的外边距都是正数时，折叠结果是它们两者之间较大的值。
+        两个相邻的外边距都是负数时，折叠结果是两者绝对值的较大值。
+        两个外边距一正一负时，折叠结果是两者的相加的和。
+  -->
+  <!-- <style>
+    .a {
+      display: block;
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      background: gray;
+    }
+    .b {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      margin-top: 30px;
+      background: forestgreen;
+    }
+    .c {
+      display: block;
+      width: 80px;
+      height: 80px;
+      margin-top: 10px;
+    }
+  </style>
+  <span class="a">我是a
+    <div class="c">我是c</div>
+  </span>
+  <span class="b">我是b</span> -->
+
+  <!-- 7. 介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？
+    标准模型： 内容(content)、填充(padding)、边界(margin)、 边框(border)；
+    ie模型： content = padding + border;
+    box-sizing: border-box (标准转为ie)
+  -->
+
+  <!-- 8. CSS选择符有哪些？css哪些属性可以继承？
+    id选择器（#id） 类选择器（.myclassname) 标签选择器（div, h1, p）相邻选择器（h1+p）
+    子选择器（ul>li） 后代选择器（li a） 通配符选择器（ * ） 属性选择器（a[rel = "external"]）
+    伪类选择器（a:hover, li:nth-child）
+
+    可继承的样式： font-size font-family color, UL LI DL DD DT
+    不可继承的： border padding margin width height
+  -->
+
+  <!-- 9.CSS优先级算法如何计算？
+      优先级就近原则，同权重情况下样式定义最近者为准
+      载入样式以最后载入的定位为准
+      优先级为: !important > id > class > tag important 比 内联优先级高
+  -->
+  <!-- 10.  CSS3新增伪类有那些？
+    p:first-of-type 选择属于其父元素的首个 <p> 元素的每个 <p> 元素。
+    p:last-of-type  选择属于其父元素的最后 <p> 元素的每个 <p> 元素。
+    p:only-of-type  选择属于其父元素唯一的 <p> 元素的每个 <p> 元素。
+    p:only-child        选择属于其父元素的唯一子元素的每个 <p> 元素。
+    p:nth-child(2)  选择属于其父元素的第二个子元素的每个 <p> 元素。
+    :after          在元素之前添加内容,也可以用来做清除浮动。
+    :before         在元素之后添加内容
+    :enabled        
+    :disabled       控制表单控件的禁用状态。
+    :checked        单选框或复选框被选中
+  -->
+  <!-- 11. 如何居中div？如何居中一个浮动元素？如何让绝对定位的div居中？
+
+  -->
+  <!-- 12.display有哪些值？说明他们的作用
+      block 象块类型元素一样显示。
+      none 缺省值。象行内元素类型一样显示。
+      inline-block 象行内元素一样显示，但其内容象块类型元素一样显示。
+      list-item 象块类型元素一样显示，并添加样式列表标记。
+      table 此元素会作为块级表格来显示
+      inherit 规定应该从父元素继承 display 属性的值
+  -->
+  <!-- 13. position的值relative和absolute定位原点是？
+      absolute 生成绝对定位的元素，相对于值不为 static的第一个父元素进行定位。
+      fixed （老ie不支持） 生成绝对定位的元素，相对于浏览器窗口进行定位。
+      relative  生成相对定位的元素，相对于其正常位置进行定位。
+      static  默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right - z-index 声明）
+      inherit  规定从父元素继承 position 属性的值
+  -->
+  <!-- 14. CSS3有哪些新特性？
+      新增各种CSS选择器 （: not(.input)：所有 class 不是“input”的节点）
+      圆角 （border-radius:8px） 多列布局 （multi-column layout） 阴影和反射 （Shadow\Reflect） 
+      文字特效（text-shadow、）
+      文字渲染 （Text-decoration） 线性渐变 （gradient） 旋转 （transform） 动画（animations） 过度（transition）
+  -->
+  <!-- 15. 用纯CSS创建一个三角形的原理是什么？ 
+      // 把上、左、右三条边隐藏掉（颜色设为 transparent/透明）
+  -->
+  <!-- <style>
+  #demo {
+  width: 0;
+  height: 0;
+  border-width: 20px;
+  border-style: solid;
+  border-color: transparent transparent red transparent;
+}</style>
+  <div id="demo"></div> -->
+
+  <!-- 16.一个满屏 品 字布局 如何设计?
+    简单的方式：
+      上面的div宽100%，
+      下面的两个div分别宽50%，
+      然后用float或者inline使其不换行即可
+  -->
+  <!-- 17.经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？
+      png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.
+      浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一
+      IE下,可以使用获取常规属性的方法来获取自定义属性,也可以使用getAttribute()获取自定义属性;
+      Firefox下,只能使用getAttribute()获取自定义属性。
+  -->
+  <!-- 18. li与li之间有看不见的空白间隔是什么原因引起的？有什么解决办法？
+      行框的排列会受到中间空白（回车\空格）等的影响，因为空格也属于字符
+      这些空白也会被应用样式，占据空间，所以会有间隔，把字符大小设为0，就没有空格了
+  -->
+
+  <!-- 19. 为什么要初始化CSS样式
+      因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异
+  -->
+  <!-- 20. 对BFC规范(块级格式化上下文：block formatting context)的理解？
+      一个页面是由很多个 Box 组成的,元素的类型和 display 属性,决定了这个 Box 的类型
+      不同类型的 Box,会参与不同的 Formatting Context（决定如何渲染文档的容器）,因此Box内的元素
+      会以不同的方式渲染,也就是说BFC内部的元素和外部的元素不会互相影响
+  -->
+  <!-- 21. css定义的权重
+      标签的权重为1，class的权重为10，id的权重为100
+      选择器优先级: 行内样式[1000] > id[100] > class[10] > Tag[1]
+      如果权重相同，则最后定义的样式会起作用，但是应该避免这种情况出现
+      在同一组属性设置中，!important 优先级最高，高于行内样式
+  -->
+  <!-- 22. display:inline-block 什么时候会显示间隙？(携程)
+      移除空格、使用margin负值、使用font-size:0、letter-spacing、word-spacing
+  -->
+  <!-- 23. 谈谈浮动和清除浮动
+      浮动的框可以向左或向右移动，直到他的外边缘碰到包含框或另一个浮动框的边框为止。
+      由于浮动框不在文档的普通流中，所以文档的普通流的块框表现得就像浮动框不存在一样。浮动的块框会漂浮在文档普通流的块框上
+  -->
+  <!-- 24. box-sizing 常用的属性有哪些？分别有什么作用？
+      box-sizing: content-box; // 默认的标准(W3C)盒模型元素效果
+      box-sizing: border-box; // 触发怪异(IE)盒模型元素的效果
+      box-sizing: inherit; // 继承父元素 box-sizing 属性的值
+  -->
+  <!-- 25. 请列举几种隐藏元素的方法
+      visibility: hidden; 这个属性只是简单的隐藏某个元素，但是元素占用的空间任然存在
+      display: none; 元素会变得不可见，并且不会再占用文档的空间。
+      opacity: 0; CSS3属性，设置0可以使一个元素完全透明
+      filter: blur(0); CSS3属性，将一个元素的模糊度设置为0，从而使这个元素“消失”在页面中
+      transform: scale(0); 将一个元素设置为缩放无限小，元素将不可见，元素原来所在的位置将被保留
+      <div hidden="hidden"> HTML5属性,效果和display:none;相同，但这个属性用于记录一个元素的状态
+  -->
+  <!-- 26. rgba() 和 opacity 的透明效果有什么不同？
+      opacity 作用于元素以及元素内的所有内容（包括文字）的透明度
+      rgba() 只作用于元素自身的颜色或其背景色，子元素不会继承透明效果
+  -->
+  <!-- 27. css 属性 content 有什么作用？
+      content 属性专门应用在 before/after 伪元素上，用于插入额外内容或样式
+  -->
+  <!-- 28. 圣杯布局的实现原理？
+      三列布局；中间主体内容前置，且宽度自适应；两边内容定宽
+      好处：重要的内容放在文档流前面可以优先渲染
+      原理：利用相对定位、浮动、负边距布局，而不添加额外标签
+  -->
+  <!-- 圣杯布局 -->
+  <!-- <style>
+    .container {
+      /* 左右栏通过添加负的margin放到正确的位置了，此段代码是为了摆正中间栏的位置 */
+      padding:0 200px 0 180px;
+      height:100px;
+    }
+    .main {
+      float:left;
+      width:100%;
+      height:100px;
+      background:blue;
+    }
+    .left {
+      float:left;
+      width:180px;
+      height:100px;
+      margin-left:-100%;
+      background:#0c9;
+      /*中间栏的位置摆正之后，左栏的位置也相应右移，通过相对定位的left恢复到正确位置*/
+      position:relative;
+      left:-180px;
+    }
+    .right {
+      float:left;
+      width:200px;
+      height:100px;
+      margin-left:-200px;
+      background:#0c9;
+      /*中间栏的位置摆正之后，右栏的位置也相应左移，通过相对定位的right恢复到正确位置*/
+      position:relative;
+      right:-200px;
+    }
+  </style>
+  <div class="container">
+    <div class="main"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+  </div> -->
+
+  <!-- 双飞翼布局 -->
+  <style>
+    .wrapper {
+      float:left;
+      width:100%;/*左栏上去到第一行*/     
+      height:100px;
+      background:blue;
+    }
+    .left {
+      float:left;
+      width:180px;
+      height:100px;
+      margin-left:-100%;
+      background:#0c9;
+    }
+    .right {
+      float:left;
+      width:200px;
+      height:100px;
+      margin-left:-200px;
+      background:#0c9;
+    }
+    .main {
+      margin:0 200px 0 180px;
+      height:100px;
+    }
+  </style>
+  <div class="container">
+    <div class="wrapper">
+        <div class="main">我是中间</div>
+    </div>
+      <div class="left">我是左边</div>
+      <div class="right">我是右边</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    /* 垂直居中 */
+    /* 1. display: table-cell; vertical-align: middle; */
+    /* .out {
+      background: gray;
+      width: 400px;
+      height: 400px;
+      display: table-cell;
+      vertical-align: middle;
+    }
+    .in {
+      background: yellow;
+      height: 200px;
+      width: 100px;
+      margin: 0 auto
+    } */
+    /* 2.display: flex布局  align-item：cente */
+    /* .out {
+      background: gray;
+      width: 400px;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .in {
+      background: yellow;
+      height: 200px;
+      width: 100px;
+    } */
+    /* 3. position: relative; top: 50%; transform: translateY(-50%) */
+    /* .out {
+      background: gray;
+      width: 400px;
+      height: 400px;
+    }
+    .in {
+      position: relative;
+      background: yellow;
+      height: 200px;
+      width: 100px;
+
+      top: 50%;
+      transform: translateY(-50%)
+    } */
+    /* 4. position: absolute; t:0 l:0; r:0; b:0 margin: 0 auto */
+    /* .out {
+      background: gray;
+      width: 400px;
+      height: 400px;
+      
+      position: relative;
+    }
+    .in {
+      position: absolute;
+      background: yellow;
+      height: 200px;
+      width: 100px;
+
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      margin:auto;
+    } */
+     /* 5. 行内元素， line-height： 父元素的高度  */
+  </style>
+  <!-- <div class="out">
+    <div class="in"></div>
+  </div> -->
+
+  <!-- 单行溢出省略号,多行溢出省略号 -->
+  <style>
+    .one {
+      width: 50px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    p.text {
+      width: 200px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+    }
+  </style>
+  <p class="one">我都会啊好的带上发挥防化服大厦将颠</p>
+  <p class="text">我都会啊好的带上发挥防化服大厦将颠我都会啊好的带上发挥防化服大厦将颠我都会啊好的带上发挥防化服大厦将颠
+      我都会啊好的带上发挥防化服大厦将颠我都会啊好的带上发挥防化服大厦将颠我都会啊好的带上发挥防化服大厦将颠
+  </p>
+</body>
+</html>

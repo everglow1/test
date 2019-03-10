@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 1.函数节流和防抖 -->
+  <!--防抖： 如果用手指一直按住一个弹簧，它将不会弹起直到你松手为止。
+  也就是说当调用动作n毫秒之后，才会执行该动作，若在这n毫秒内又调用此动作则将重新计算执行时间。 -->
+  <script>
+    /**
+     * 防抖
+     * 空闲控制 返回函数连续调用时，空闲时间必须大于或等于 idle
+     * @param idle   {number}    空闲时间，单位毫秒
+     * @param action {function}  请求关联函数，实际应用需要调用的函数
+     * @return {function}    返回客户调用函数
+     * **/
+    // function debounce(idle, action) {
+    //   let last
+    //   return function() {
+    //     let ctx = this
+    //     let args = arguments
+    //     clearTimeout(last) 
+    //     last = setTimeout(function() {
+    //       action.apply(ctx, args)
+    //     }, idle);
+    //   }
+    // }
+    // function action() {
+    //   console.log(1111)
+    // }
+    // debounce(3, action)
+
+    /**
+     * 节流
+     * 如果将水龙头拧紧直到水是以水滴的形式流出，那你会发现每隔一段时间，就会有一滴水流出。
+     * 也就是会说预先设定一个执行周期，当调用动作的时刻大于等于执行周期则执行该动作，然后进入下一个新周期。
+     * @param delay  {number}    延迟时间，单位毫秒
+     * @param action {function}  请求关联函数，实际应用需要调用的函数
+     * @return {function}    返回客户调用函数
+     * **/
+    let throttle = function(delay, action) {
+      let last = 0
+      return function() {
+        let curr = curr + new Date()
+        if(curr - last > delay) {
+          action.apply(this, arguments)
+          last = curr
+        }
+      }
+    }
+    throttle(1000, action)
+  </script>
+</body>
+</html>

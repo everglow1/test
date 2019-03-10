@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>中间自适应两边固定</title>
+</head>
+<body>
+  <style>
+    /* 一：flex布局 */
+    /* .wrapper {
+      display: flex;
+      width: 100%;
+      background: gray;
+    }
+    .left {
+      flex: 0 0 auto;
+      background: red;
+    }
+    .middle {
+      flex: 1 1 200px;
+      background: khaki;
+    }
+    .right {
+      flex: 0 0 auto;
+      background: green;
+    } */
+
+    /* 二： 浮动，中间栏使用margin-left margin-right隔开左右两边 */
+    /* .wrapper {
+      width: 100%;
+      background: gray;
+    }
+    .left {
+      float: left;
+      width: 100px;
+      background: red;
+    }
+    .middle {
+      float: right;
+      width: 200px;
+      background: khaki;
+    }
+    .right {
+      margin-left: 100px;
+      margin-right: 200px;
+      background: green;
+    } */
+
+    /* 方法三： position:absolute, 利用left right来隔开左右两边位置*/
+    /* .wrapper {
+      width: 100%;
+      position: relative;
+      background: gray;
+    }
+    .left {
+      position: absolute;
+      left: 0;
+      width: 100px;
+      background: red;
+    }
+    .middle {
+      position: absolute;
+      left: 110px;
+      right: 310px;
+      background: khaki;
+    }
+    .right {
+      width: 300px;
+      position: absolute;
+      right: 0;
+      background: green;
+    } */
+
+    /* 方法四： display:inline-block; 中间calc计算宽度 左右两边写死宽度*/
+    /* .wrapper {
+      width: 100%;
+      position: relative;
+      background: gray;
+    }
+    .left {
+      display: inline-block;
+      width: 100px;
+      background: red;
+    }
+    .middle {
+      display: inline-block;
+      width: calc(100% - 430px);
+      background: khaki;
+    }
+    .right {
+      display: inline-block;
+      width: 300px;
+      background: green;
+    } */
+  </style>
+  <div class="wrapper">
+    <div class="left">我是左边</div>
+    <div class="middle">我是中间</div>
+    <div class="right">我是右边</div>
+  </div>
+</body>
+</html>
