@@ -113,8 +113,8 @@
 // console.log(a)
 // forEach // 主要用来操作数据
 
-var a = 1
-function test() {
-  console.log(a)
-}
-test()
+// var a = 1
+// function test() {
+//   console.log(a)
+// }
+// test()

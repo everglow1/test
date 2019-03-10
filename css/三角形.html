@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .trangle {
+      width: 0;
+      height: 0;
+      /* border-width 有4个值： 上下左右的宽度 */
+      border-width: 0 30px 30px;  
+      border-style: solid;
+      /* border-color 有4个值，上下左右的颜色。 transparent透明色  可根据这个更改三角形的方向*/
+      border-color: transparent transparent #333 transparent;
+      margin: 40px auto;
+      position: relative;
+    }
+  </style>
+  <div class="trangle">
+    <span></span>
+  </div>
+</body>
+</html>
