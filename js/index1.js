@@ -118,3 +118,20 @@
 //   console.log(a)
 // }
 // test()
+
+// 通过cookie名获取cookie值
+let cookie ="koo=ggg; _ga=GA1.2.1771730554.1542192123; Hm_lvt_3eec0b7da6548cf07db3bc477ea905ee=1550567006,1550916816,1552228356,1552403518; _gid=GA1.2.669800284.1552403519; username=kkk; Hm_lpvt_3eec0b7da6548cf07db3bc477ea905ee=1552445438"
+function getCookie(cname) {
+  let obj = {}
+  // let cookie ="koo=value;_ga=GA1.2.1771730554.1542192123;Hm_lvt_3eec0b7da6548cf07db3bc477ea905ee=1550567006,1550916816,1552228356,1552403518;_gid=GA1.2.669800284.1552403519;username=kkk;Hm_lpvt_3eec0b7da6548cf07db3bc477ea905ee=1552445438"
+  let valueArr = cookie.split(';')
+  for(let i = 0; i < valueArr.length; i++) {
+    let key = valueArr[i].split('=')[0].trim()
+    let value = valueArr[i].split('=')[1]
+    if(!obj[key]) {
+      obj[key] = value
+    }
+  }
+  return obj[cname] ? obj[cname] : '无'
+}
+console.log(getCookie('_ga'))

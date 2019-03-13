@@ -68,16 +68,16 @@
 //   a: 1,
 //   b: function() {
 //     console.log('b', this.a)   // 普通函数的this，指向函数运行时所在的对象。
-//     let fn = () => {
+//     let fn =  () => {
 //       console.log('fn', this.a) // 箭头函数fn的this，指向fn所在环境的this。 fn所在环境为 b， b的this指向obj
 //     }
 //     fn()
 //   },
 //   c: () => {
-//     console.log('c', this)   // 箭头函数c的this，指向c所在环境的this，c所在环境为obj， obj的this为window
+//     console.log('c', this.a)   // 箭头函数c的this，指向c所在环境的this，c所在环境为obj， obj的this为window
 //   }
 // }
-// obj.b()
+// obj.c()
 
 // function test() {
 //   setTimeout(() => {
@@ -277,20 +277,20 @@
  * 9. 解析url，返回一个对象。
  */
 
-// let url = 'https://www.baidu.com/s?wd=Math.random()&rsv_spt=1&rsv_iqid=0xfd7c0ee400048d09&issp=1#list.html'
-// function parseUrl(url) {
-//   let newArr = url.split('?')[1].split('#')[0].split('&')
-//   let obj = {}
-//   for(let i = 0; i < newArr.length; i++) {
-//     let key = newArr[i].split('=')[0]
-//     let value = newArr[i].split('=')[1]
-//     if(!obj[key]) {
-//       obj[key] = value
-//     }
-//   }
-//   return obj
-// }
-// console.log(parseUrl(url))
+let url = 'https://www.baidu.com/s?wd=Math.random()&rsv_spt=1&rsv_iqid=0xfd7c0ee400048d09&issp=1#list.html'
+function parseUrl(url) {
+  let newArr = url.split('?')[1].split('#')[0].split('&')
+  let obj = {}
+  for(let i = 0; i < newArr.length; i++) {
+    let key = newArr[i].split('=')[0]
+    let value = newArr[i].split('=')[1]
+    if(!obj[key]) {
+      obj[key] = value
+    }
+  }
+  return obj
+}
+console.log(parseUrl(url))
 
 /**
  * 10. rgb转16进制度
@@ -414,12 +414,12 @@
 /**
  * 14. json转换
  */
-var obj = [
-  {id:1, parent: null},
-  {id:2, parent: 1},
-  {id:3, parent: 2},
-  {id:4, parent: 3}
-];
+// var obj = [
+//   {id:1, parent: null},
+//   {id:2, parent: 1},
+//   {id:3, parent: 2},
+//   {id:4, parent: 3}
+// ];
 // var obj2 = {
 //   obj: {
 //     id: 1,
@@ -471,13 +471,13 @@ var obj = [
  */
 // log(“Hello world”)返回“(app)Hello world”
 // log(“Hello”,”world”)返回”(app)Hello world”
-function log(){
-  let arg = arguments
+// function log(){
+//   let arg = arguments
   
-    var args = Array.prototype.slice.call(arguments).map((arg) => {
-      return arg
-    });
-    var t=args.toString().replace(',',' ')
-    console.log('(app)'+t)
-}
-log( 'hello','word');
+//     var args = Array.prototype.slice.call(arguments).map((arg) => {
+//       return arg
+//     });
+//     var t=args.toString().replace(',',' ')
+//     console.log('(app)'+t)
+// }
+// log( 'hello','word');
